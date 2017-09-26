@@ -7,7 +7,7 @@ var map = L.map('mapa-alfacar', {
 	zoomControl: false
 }).setView([37.242331, -3.562764], 15);
 
-L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 18
 }).addTo(map);
 
