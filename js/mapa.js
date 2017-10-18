@@ -1,4 +1,5 @@
 window.onload  = function(){
+	//Capas
 	var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
 		maxZoom: 20,
 		subdomains:['mt0','mt1','mt2','mt3']
@@ -18,16 +19,20 @@ window.onload  = function(){
 		"Google Satellite": googleSat
 	};
 
+	//Mapa
 	var map = L.map('geomapa', {
 		layers: [googleStreets]
 	});
 	L.control.layers(capas).addTo(map);
 
-	map.locate({setView: true});
+	// Geolocalización
+	map.locate({setView: true, maxZoom: 6});
 	map.on('locationfound', function(e){
 		L.marker(e.latlng).addTo(map);
 
 		var radius = e.accuracy / 2;
 		L.circle(e.latlng, {'radius': radius, 'color': '#0026FF'}).addTo(map);
+
+		map.setMaxBounds([e.latlng]);
 	});
 };
