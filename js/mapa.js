@@ -9,5 +9,8 @@ window.onload  = function(){
 	map.locate({setView: true});
 	map.on('locationfound', function(e){
 		L.marker(e.latlng).addTo(map);
+
+		var radius = e.accuracy / 2;
+		L.circle(e.latlng, {'radius': radius, 'color': '#0026FF'}).addTo(map);
 	});
 };
