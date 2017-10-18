@@ -21,7 +21,8 @@ window.onload  = function(){
 
 	//Mapa
 	var map = L.map('geomapa', {
-		layers: [googleStreets]
+		layers: [googleStreets],
+		minZoom: 4
 	});
 	L.control.layers(capas).addTo(map);
 
@@ -31,7 +32,7 @@ window.onload  = function(){
 		L.marker(e.latlng).addTo(map);
 
 		var radius = e.accuracy / 2;
-		L.circle(e.latlng, {'radius': radius, 'color': '#0026FF'}).addTo(map);
+		L.circle(e.latlng, {radius: radius, color: '#0026FF', weight: 5, opacity: 0.1, fillOpacity: 0.4}).addTo(map);
 
 		map.setMaxBounds([e.latlng]);
 	});
